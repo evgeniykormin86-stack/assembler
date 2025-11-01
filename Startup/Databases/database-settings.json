@@ -1,0 +1,54 @@
+{
+  "postgres": {
+    "host": "postgres",
+    "ports": {"5432/tcp": 5432},
+    "environment": {
+      "POSTGRES_USER": "postgres",
+      "POSTGRES_PASSWORD": "postgres",
+      "POSTGRES_DB": "assembler_db"
+    },
+    "name": "postgres",
+    "volumes": {
+      "assembler_postgres": {"bind": "/var/lib/postgresql/data", "mode": "rw"}
+    },
+    "network": "assembler",
+    "version": 15
+  },
+  "redis": {
+    "host": "redis",
+    "ports": {"6379/tcp": 6379},
+    "database_name": 0,
+    "name": "redis",
+    "volumes":{
+        "assembler_redis": {"bind": "/data", "mode": "rw"}
+    },
+    "network": "assembler",
+    "version": 7
+  },
+  "elasticsearch": {
+    "host": "elasticsearch",
+    "ports": {"9200/tcp": 9200, "9300/tcp": 9300},
+    "environment": {
+        "discovery.type": "single-node",
+        "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
+    },
+    "name": "elasticsearch",
+    "network": "assembler",
+    "scheme": "http",
+    "volumes": {
+        "assembler_es": {"bind": "/usr/share/elasticsearch/data", "mode": "rw"}
+    },
+    "version": "7.17.17"
+  },
+  "mongodb": {
+    "host": "mongo",
+    "ports": {"27017/tcp": 27017},
+    "database_name": "admin",
+    "name": "mongo",
+    "volumes": {
+        "assembler_mongo": {"bind": "/data/db", "mode": "rw"}
+    },
+    "network": "assembler",
+    "version": 7.0
+  }
+}

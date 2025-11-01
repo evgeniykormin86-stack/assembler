@@ -1,0 +1,18 @@
+{
+  "graylog": {
+    "name": "graylog/graylog",
+    "container_name": "graylog",
+    "ports": {
+      "9000/tcp": 9000,
+      "12201/udp": 12201
+    },
+    "environment": {
+      "password": "MySecretPassword"
+    },
+    "volumes": {
+      "graylog_data": {"bind": "/usr/share/graylog/data", "mode": "rw"}
+    },
+    "network": "assembler",
+    "version": "7.0.0-rc.1-1"
+  }
+}
