@@ -10,6 +10,10 @@ cisa: CISA = CISA()
 def hello():
     return "Hello from assembler SDK!"
 
+@app.route("/2")
+def hello2():
+    return "Hello from assembler SDK2!"
+
 @app.route("/get-cisa-kev", methods=["GET"])
 def get_cisa_kev():
     params = request.get_json(force=True)
@@ -25,9 +29,6 @@ def get_cisa_kev():
         "cisa_kev_data": cisa_kev_data
     })
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,10 +1,10 @@
-from docker import DockerClient
+import docker
 from docker.errors import NotFound
 
-
-class Client(object):
+class Client:
     def __init__(self):
-        self.__client: DockerClient = DockerClient(base_url='tcp://localhost:2375')
+        # Connect to local Docker daemon via Unix socket
+        self.__client = docker.from_env()
         self.__error_NotFound = NotFound
 
     @property

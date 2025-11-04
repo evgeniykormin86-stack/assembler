@@ -8,7 +8,7 @@
       "FLASK_ENV": "development"
     },
     "volumes": {
-      "D:/MyProjects/assembler/Backend": {
+      "/home/eugenekormin/MyProjects/assembler/Backend": {
         "bind": "/app",
         "mode": "rw"
       }
