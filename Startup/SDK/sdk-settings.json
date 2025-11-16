@@ -2,7 +2,7 @@
   "python": {
     "name": "assembler-python-sdk",
     "container_name": "assembler_python_sdk",
-    "ports": {"8000/tcp": 8000},
+    "ports": { "8000/tcp": 8000 },
     "environment": {
       "FLASK_APP": "Server",
       "FLASK_ENV": "development"
@@ -15,5 +15,25 @@
     },
     "network": "assembler",
     "version": "dev"
+  },
+
+  "frontend": {
+    "name": "assembler-frontend",
+    "container_name": "assembler_frontend",
+    "ports": { "3000/tcp": 3000 },
+    "environment": {
+      "NODE_ENV": "development",
+      "NEXT_TELEMETRY_DISABLED": "1"
+    },
+    "volumes": {
+      "/home/eugenekormin/MyProjects/assembler/frontend": {
+        "bind": "/app",
+        "mode": "rw"
+      }
+    },
+    "network": "assembler",
+    "version": "dev",
+    "command": "npm run dev -- --turbopack",
+    "depends_on": ["python"]
   }
 }

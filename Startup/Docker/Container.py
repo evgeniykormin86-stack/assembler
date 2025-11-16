@@ -137,6 +137,7 @@ class Container(Client):
 
     @staticmethod
     def __run_n8n_if_pulled(database_settings):
+        print(database_settings)
         client.containers.run(
             image=f'{database_settings.name}:{database_settings.version}',
             name=database_settings.name.replace('/', '_'),

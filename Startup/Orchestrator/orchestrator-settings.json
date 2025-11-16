@@ -15,8 +15,46 @@
       "QUEUE_BULL_REDIS_PORT": 6379,
       "WEBHOOK_URL": "http://localhost:5678/"
     },
+  "volumes": {
+        "n8n_data": {
+          "bind": "/home/node/.n8n",
+          "mode": "rw"
+        },
+        "/home/eugenekormin/n8n_files": {
+          "bind": "/home/node/files",
+          "mode": "rw"
+        }
+      },
+    "network": "assembler",
+    "version": "latest"
+  },
+  "langflow": {
+    "name": "langflowai/langflow",
+    "container_name": "langflow",
+    "ports": {
+      "7860/tcp": 7860
+    },
+    "environment": {
+      "LANGFLOW_HOST": "0.0.0.0",
+      "LANGFLOW_PORT": 7860,
+
+      "LANGFLOW_LOG_LEVEL": "info",
+      "LANGFLOW_CORS_ORIGINS": "*",
+
+      "LANGFLOW_USERNAME": "admin",
+      "LANGFLOW_PASSWORD": "MySecretPassword",
+
+      "LANGFLOW_DATABASE_URL": "sqlite:////app/langflow/langflow.db"
+    },
     "volumes": {
-      "n8n_data": { "bind": "/home/node/.n8n", "mode": "rw" }
+      "langflow_data": {
+        "bind": "/app/langflow",
+        "mode": "rw"
+      },
+      "/home/eugenekormin/langflow_files": {
+        "bind": "/app/files",
+        "mode": "rw"
+      }
     },
     "network": "assembler",
     "version": "latest"

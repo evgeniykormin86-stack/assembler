@@ -1,0 +1,19 @@
+{
+    "id": "chunk_0001",
+    "book": "Harry Potter and the Sorcerer's Stone",
+    "chapter": "The Boy Who Lived",
+    "start_char": 0,
+    "end_char": 950,
+    "text": "Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say...",
+    "summary": "Introduction of Dursleys and hints of the magical world.",
+    "entities": {
+        "characters": ["Vernon Dursley", "Petunia Dursley", "Harry Potter"],
+        "locations": ["Privet Drive"],
+        "objects": []
+    },
+    "themes": ["Family", "Secrecy", "Ordinary vs Magical"],
+    "relations": [
+        {"type": "parent_of", "source": "Petunia Dursley", "target": "Harry Potter"}
+    ],
+    "source_reference": "book1_ch1"
+}
